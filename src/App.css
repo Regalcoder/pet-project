@@ -32,6 +32,21 @@
   color: red;
 }
 
+.header{
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 1%;
+  font-size: large;
+  font-weight: 600;
+}
+
+a{
+  text-decoration: none !important;
+  color: white;
+  padding: 2px;
+}
+
 app-check{
   height: 28px;
   width: 28px;
