@@ -19,23 +19,23 @@ function Login() {
       // this will run a get request as long as user entry is not null or empty
       // console.log('Proceed! Your login is successful...')
       axios
-        .get(" http://localhost:8000/user/" + username) //this will return a user detail with the supplied unique username hence why username is added. if the entered username is not on the db it will return an error
+        .get("https://users-6h7j.onrender.com/user/" + username ) //this will return a user detail with the supplied unique username hence why username is added. if the entered username is not on the db it will return an error
         .then((res) => {
-          if (Object.keys(res.data).length === 0) {
-            // this condition will check ther server response using the object key method then count its length.if its length is zero which means the server returned nothin then it means that the username entered is not on the db
-            toast.error("please enter valid username");
-            console.log('wrong username entered');
-          } else { //this condition will run once the other condition is met otherwise it is ignored
-            if (res.data.password === password) {
-              toast.success("login successful...");
-              sessionStorage.setItem('username', username)
-              navigate("/");
-              console.log('login successful')
+           if (Object.keys(res.data).length === 0) {
+             // this condition will check ther server response using the object key method then count its length.if its length is zero which means the server returned nothin then it means that the username entered is not on the db
+             toast.error("please enter valid username");
+             console.log('wrong username entered');
+           }  else { //this condition will run once the other condition is met otherwise it is ignored
+             if (res.data.password === password) {
+               toast.success("login successful...");
+               sessionStorage.setItem('username', username)
+               navigate("/");
+               console.log('login successful')
             } else {
-              toast.error("Password not correct");
+               toast.error("Password not correct");
+             }
             }
-           }
-          console.log(res)
+          console.log('stuff...',res.data)
         })
         .catch((err) => {
           toast.error("This username does not exist...");

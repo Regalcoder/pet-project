@@ -64,12 +64,13 @@ const Register = () => {
       console.log(regobj);
 
       axios
-        .post(" http://localhost:8000/user", regobj)
+        .post(" https://users-6h7j.onrender.com/user", regobj)
         .then((response) => {
           toast.success("Registeration successful...");
           navigate("/login");
           console.log(
-            "your registeration details has been recieved successfully..."
+            "your registeration details has been recieved successfully...",
+            response
           );
         })
         .catch((err) => {
