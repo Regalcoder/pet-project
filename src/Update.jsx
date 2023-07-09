@@ -22,10 +22,10 @@ const Update = () => {
     // this gets the item we want to update using its unique id and its url
     const {id} = useParams();   //this hook helps us target the id of the item we are trying to read
     useEffect(()=>{
-        axios.get('https://reqres.in/api/users/' +id) // the id tells the server api that we need the entry with the particular id that the param hook extracts
+        axios.get('https://users-6h7j.onrender.com/user/' +id) // the id tells the server api that we need the entry with the particular id that the param hook extracts
         .then(res => {    // we use this to handle the api call response
             console.log("Data ready for update:::", res);
-            setValues(res.data.data) // we update the value of data with the api response 
+            setValues(res.data) // we update the value of data with the api response 
         })
         .catch((err) =>console.log(err))
     }, [id])
@@ -36,7 +36,7 @@ const Update = () => {
     //with the url location
     const handleUpdate = (event) => {
         event.preventDefault();
-        axios.put('https://reqres.in/api/users/'+id, values) // posts the user entries stored in values object array in the server location represented by the url and id. the id ensures that the new entery is stored as a replacement
+        axios.put('https://users-6h7j.onrender.com/user/'+id, values) // posts the user entries stored in values object array in the server location represented by the url and id. the id ensures that the new entery is stored as a replacement
         .then(res=> {
             console.log('Response updated...', res)
             navigate('/') //navigates the page to home page after post has been done without errors
@@ -52,6 +52,11 @@ const Update = () => {
             <div className="w-50 border bg-white shadow px-5 pt-3 rounded">
                 <h1>Update User</h1>
                 <form onSubmit={handleUpdate}>
+                <div className="mb-2">
+                        <label htmlFor="last-name">Profile Pic Url:</label>
+                        <input type="text" name="last_name" className="form-control" placeholder="Enter Last Name" required
+                        value={values.last_name} onChange={e=> setValues({...values, last_name: e.target.value})}/> {/*the event.target.value targets the entry here and saves it to lastname name in values*/}
+                    </div>
                     <div className="mb-2">
                         <label htmlFor="email">Email:</label>
                         <input type="email" name="email" className="form-control" placeholder="Enter Email" required 
