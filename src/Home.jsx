@@ -42,9 +42,9 @@ const Home = () => {
         <Link to={"/"}>Home</Link>
         <Link style={{float: 'right'}} to={"/login"}>Logout</Link>
       </div>
-      <div className="d-flex flex-column justify-content-center align-items-center bg-light vh-50">
+      <div className="d-flex flex-column w-100 justify-content-center align-items-center bg-light vh-50">
         <h1>List of Users</h1>
-        <div className="w-75 rounded bg-white border shadow p-4">
+        <div className="table-responsive w-100 rounded bg-white border shadow p-4">
           <div className="d-flex justify-content-end mb-3">
             <Link to="/create" className="btn btn-success">
               Add +
@@ -53,12 +53,12 @@ const Home = () => {
           <table className="table table-striped">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Email</th>
-                <th>FIRST-Name</th>
-                <th>LAST-Name</th>
-                <th>AVATAR</th>
-                <th>ACTION</th>
+                <th scope="col">ID</th>
+                <th scope="col">Email</th>
+                <th scope="col">FIRST-Name</th>
+                <th scope="col">LAST-Name</th>
+                <th scope="col">AVATAR</th>
+                <th scope="col">ACTION</th>
               </tr>
             </thead>
             <tbody>
