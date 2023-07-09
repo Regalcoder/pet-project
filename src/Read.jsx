@@ -7,9 +7,9 @@ const Read = () => {
     const [data, setData] = useState([]) //we declare a variable data and assign it a state of array then use the setData to assign new valuews to data array
     const {id} = useParams(); //this hook helps us target the id of the item we are trying to read
     useEffect(()=>{
-        axios.get('https://reqres.in/api/users/' +id) // the id tells the server api that we need the entry with the particular id that the param hook extracts
+        axios.get('https://users-6h7j.onrender.com/user/' +id) // the id tells the server api that we need the entry with the particular id that the param hook extracts
         .then(res => {    // we use this to handle the api call response
-            setData(res.data.data) // we update the value of data with the api response 
+            setData(res.data) // we update the value of data with the api response 
         })
         .catch((err) =>console.log(err))
     }, [id])
@@ -24,13 +24,13 @@ const Read = () => {
                     <img width='120px' src={data.avatar} alt="" />
                 </div>
                 <div className="mb-2">
+                    <strong>Full Name: {data.name}</strong>
+                </div>
+                <div className="mb-2">
                     <strong>Email: {data.email}</strong>
                 </div>
                 <div className="mb-2">
-                    <strong>First Name: {data.first_name}</strong>
-                </div>
-                <div className="mb-2">
-                    <strong>Last Name: {data.last_name}</strong>
+                    <strong>gender: {data.gender}</strong>
                 </div>
                 
                 <Link to={`/update/${id}`} className="btn btn-success">Edit</Link>

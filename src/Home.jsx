@@ -14,11 +14,11 @@ const Home = () => {
   const [data, setData] = useState([]); //we declare a variable data and assign it a state of array then use the setData to assign new valuews to data array
   useEffect(() => {
     axios
-      .get("https://reqres.in/api/users") // an axios get request to a reqres api server
+      .get("https://users-6h7j.onrender.com/user") // an axios get request to a reqres api server
       .then((res) => {
         // we use this to handle the api call response
         console.log("List of user Data:::", res);
-        setData(res.data.data); // we update the value of data with the api response
+        setData(res.data); // we update the value of data with the api response
       })
       .catch((err) => console.log(err));
   }, []); // the empty array here tells the browser to run our render only once
@@ -27,10 +27,10 @@ const Home = () => {
     const confirm = window.confirm("would you like to Delete this entry?");
     if (confirm) {
       axios
-        .delete("https://reqres.in/api/users" + id)
+        .delete("https://users-6h7j.onrender.com/user/" + id)
         .then((res) => {
           console.log("entry deleted...", res);
-          // window.location.reload(false);
+           window.location.reload(false);
         })
         .catch((err) => console.log(err));
     }
@@ -53,11 +53,12 @@ const Home = () => {
           <table className="table table-striped">
             <thead>
               <tr>
-                <th>ID</th>
+                <th>Username/ID</th>
+                <th>Full name</th>
                 <th>Email</th>
-                <th>FIRST-Name</th>
-                <th>LAST-Name</th>
-                <th>AVATAR</th>
+                <th>Phone</th>
+                <th>Country</th>
+                <th>Profile Picture</th>
                 <th>ACTION</th>
               </tr>
             </thead>
@@ -72,11 +73,12 @@ const Home = () => {
                     {" "}
                     {/*the i is assigned to a variable key in the table row telling the map method that each row will be filled with items and their ids*/}
                     <td>{d.id}</td>
+                    <td>{d.name}</td>
                     <td>{d.email}</td>
-                    <td>{d.first_name}</td>
-                    <td>{d.last_name}</td>
+                    <td>{d.phone}</td>
+                    <td>{d.country}</td>
                     <td>
-                      <img src={d.avatar} alt="User Profile Pic" />
+                      <img src={d.avatar} width='120px' alt="User Profile Pic" />
                     </td>
                     <td>
                       <Link
@@ -85,7 +87,7 @@ const Home = () => {
                         className="btn btn-sm btn-info me-2"
                       >
                         Read
-                      </Link>{" "}
+                      </Link>
                       {/*we use an id on the locator cos we are targeting a single entry*/}
                       <Link
                         to={`/update/${d.id}`}
