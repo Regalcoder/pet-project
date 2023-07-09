@@ -22,10 +22,10 @@ const Create = () => {
         .catch(err => console.log(err))
     }
     return ( 
-        <div className="d-flex w-100 vh-100 justify-content-center align-items-center bg-light">
-            <div className="w-50 border bg-white shadow px-5 pt-3 rounded">
+        <div className="container d-flex w-100 vh-100 justify-content-center align-items-center bg-light">
+            <div className="container border bg-white shadow px-5 pt-3 rounded">
                 <h1>Add a User</h1>
-                <form onSubmit={handleSubmit}>
+                <form  onSubmit={handleSubmit}>
                     <div className="mb-2">
                         <label htmlFor="email">Email:</label>
                         <input type="email" name="email" className="form-control" placeholder="Enter Email" required 

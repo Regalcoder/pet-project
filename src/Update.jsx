@@ -49,7 +49,7 @@ const Update = () => {
 
     return ( 
         <div className="d-flex w-100 vh-100 justify-content-center align-items-center bg-light">
-            <div className="w-50 border bg-white shadow px-5 pt-3 rounded">
+            <div className="container-sm|md|lg|xl border bg-white shadow px-5 pt-3 rounded">
                 <h1>Update User</h1>
                 <form onSubmit={handleUpdate}>
                 <div className="mb-2">

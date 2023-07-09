@@ -16,8 +16,8 @@ const Read = () => {
 
 
     return ( 
-        <div className="d-flex w-100 vh-100 justify-content-center align-items-center bg-light">
-            <div className="w-50 border bg-white shadow px-5 pt-3 pb-5 rounded">
+        <div className="container d-flex vh-100 justify-content-center align-items-center bg-light">
+            <div className="container-sm|md|lg|xl border bg-white shadow px-5 pt-3 pb-5 rounded">
                 <h3>Detail of User</h3>
                 <div className="mb-3 d-flex flex-column"> 
                     <strong>Profile Pic: </strong>
