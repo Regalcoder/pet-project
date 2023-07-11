@@ -4,11 +4,11 @@ import "../src/home.css";
 import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
-    const usenavigate = useNavigate();
-  useEffect(()=>{
-    let username = sessionStorage.getItem('username')
-    if(username==='' || username ===null){
-        usenavigate('/login')
+  const usenavigate = useNavigate();
+  useEffect(() => {
+    let username = sessionStorage.getItem("username");
+    if (username === "" || username === null) {
+      usenavigate("/login");
     }
   }, [usenavigate]);
   const [data, setData] = useState([]); //we declare a variable data and assign it a state of array then use the setData to assign new valuews to data array
@@ -30,7 +30,7 @@ const Home = () => {
         .delete("https://users-6h7j.onrender.com/user/" + id)
         .then((res) => {
           console.log("entry deleted...", res);
-           window.location.reload(false);
+          window.location.reload(false);
         })
         .catch((err) => console.log(err));
     }
@@ -40,24 +40,26 @@ const Home = () => {
     <>
       <div className="header">
         <Link to={"/"}>Home</Link>
-        <Link style={{float: 'right'}} to={"/login"}>Logout</Link>
+        <Link style={{ float: "right" }} to={"/login"}>
+          Logout
+        </Link>
       </div>
       <div className="d-flex flex-column w-100 justify-content-center align-items-center bg-light vh-50">
         <h1>List of Users</h1>
         <div className="table-responsive w-100 rounded bg-white border shadow p-4">
           <div className="d-flex justify-content-end mb-3">
-            <Link to="/create" className="btn btn-success">
+            {/* <Link to="/create" className="btn btn-success">
               Add +
-            </Link>
+            </Link> */}
           </div>
           <table className="table table-striped">
             <thead>
               <tr>
-                <th scope="col">ID</th>
+                <th scope="col">User Name</th>
                 <th scope="col">Email</th>
-                <th scope="col">FIRST-Name</th>
-                <th scope="col">LAST-Name</th>
-                <th scope="col">AVATAR</th>
+                <th scope="col">Full Name</th>
+
+                <th scope="col">Profile Pic</th>
                 <th scope="col">ACTION</th>
               </tr>
             </thead>
@@ -72,12 +74,14 @@ const Home = () => {
                     {" "}
                     {/*the i is assigned to a variable key in the table row telling the map method that each row will be filled with items and their ids*/}
                     <td>{d.id}</td>
-                    <td>{d.name}</td>
                     <td>{d.email}</td>
-                    <td>{d.phone}</td>
-                    <td>{d.country}</td>
+                    <td>{d.name}</td>
                     <td>
-                      <img src={d.avatar} width='120px' alt="User Profile Pic" />
+                      <img
+                        src={d.avatar}
+                        width="120px"
+                        alt="User Profile Pic"
+                      />
                     </td>
                     <td>
                       <Link
